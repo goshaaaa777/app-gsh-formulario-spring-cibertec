@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -15,53 +15,47 @@
             Cálculo de Promedio - Cibertec
         </div>
         <div class ="card-body">
-          <form>
+          <form th:action="@{/promedionotas}" method="post" th:object="${promediomodel}">
               <div class="form-floating mb-3">
                   <input type="number"
                          class="form-control"
                          id="txtcle1"
-                         placeholder="name@example.com">
+                         placeholder="name@example.com"
+                        th:field="*{cl1}">
                   <label for="txtcle1">Ingrese nota del cl1</label>
               </div>
               <div class="form-floating">
                   <input type="number"
                          class="form-control"
                          id="txtcle2"
-                         placeholder="Password">
-                  <label for="floatingPassword">Ingrese nota del CL1</label>
+                         placeholder="Password"
+                         th:field="*{cl2}">
+                  <label for="txtcle2">Ingrese nota del CL2</label>
               </div>
 
               <div class="form-floating">
                   <input type="number"
                          class="form-control"
                          id="txtcle3"
-                         placeholder="Password">
-                  <label for="floatingPassword">Ingrese nota del CL2</label>
-              </div>
-
-              <div class="form-floating">
-                  <input type="number"
-                         class="form-control"
-                         id="txtcle4"
-                         placeholder="Password">
-                  <label for="floatingPassword">Ingrese nota del CL3</label>
+                         placeholder="Password"
+                         th:field="*{cl3}">
+                  <label for="txtcle3">Ingrese nota del CL3</label>
               </div>
 
               <div class="form-floating">
                   <input type="number"
                          class="form-control"
                          id="txtcleproyecto"
-                         placeholder="Password">
-                  <label for="floatingPassword">Ingrese nota del Proyecto final</label> 
+                         placeholder="Password"
+                         th:field="*{proyectF}">
+                  <label for="txtcleproyecto">Ingrese nota del Proyecto final</label>
               </div>
-
               <button type="submit" class="btn btn-success">Calcular Promedio</button>
-              <hr   />
-
-              <div class="alert alert-success" role="alert">
-                  A simple success alert—check it out!
+              <hr/>
+              <div th:if="${verresultado}" class="alert alert-success" role="alert">
+                  Error
+                  <span th:text="${resultado} ?: ''"></span>
               </div>
-
           </form>
         </div>
     </div>
